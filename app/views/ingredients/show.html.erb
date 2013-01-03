@@ -1,0 +1,27 @@
+
+<p>
+  <b>Name:</b>
+  <%= @ingredient.name %>
+</p>
+
+<p>
+  <b>Decsription:</b>
+  <%= @ingredient.decsription %>
+</p>
+
+<p>
+  <b>Calorie value:</b>
+  <%= @ingredient.calorie_value %>
+</p>
+
+<strong>Under the brand:</strong>
+<ul>
+  <% @ingredient.brands.each do |brand| %>
+      <li><p><%= link_to brand.name, brand %></p></li>
+  <% end %>
+</ul>
+<hr>
+
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>

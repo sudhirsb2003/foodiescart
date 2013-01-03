@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category: MyString
+  difficulty_level: MyString
+  cooking_time: 2013-01-01 14:10:23
+  preparation_method: MyText
+  author_name: MyString
+  user_id: 1
+
+two:
+  name: MyString
+  category: MyString
+  difficulty_level: MyString
+  cooking_time: 2013-01-01 14:10:23
+  preparation_method: MyText
+  author_name: MyString
+  user_id: 1
