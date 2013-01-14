@@ -1,20 +1,79 @@
-body {
-    background-color: #fff;
-    font-family: Verdana, Helvetica, Arial;
-    font-size: 14px;
+html, body {
+  background-color: #FFF;
+  font-family: Verdana, Helvetica, Arial;
+  font-size: 14px;
 }
 
-a img {
+hr {
     border: none;
+    /* top    */ border-top: 1px solid #ccc;
+    /* middle */ background-color: #ddd; color: #ddd;
+    /* bottom */ border-bottom: 1px solid #eee;
+    height: 1px;
+    *height: 3px; /* IE6+7 need the total height */
 }
 
 a {
-    color: #0000FF;
+  color: #0000FF;
+  img { border: none; }
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+#container {
+  width: auto;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 20px 40px;
+  border: solid 0px black;
+  margin-top: 20px;
+}
+
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.error_messages, #error_explanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 0;
+    background-color: black;
+    color: #fff;
+  }
+
+  p { margin: 8px 10px; }
+  ul { margin-bottom: 0; }
 }
 
 table {
     font-size: 14px;
-    width: 100%;
+    width: 50%;
     text-align: center;
     border-collapse: collapse;
 }
@@ -41,64 +100,24 @@ tr:hover td {
     background: #eff2ff;
 }
 
-.clear {
-    clear: both;
-    height: 0;
-    overflow: hidden;
+
+.field_with_errors {
+  display: inline;
 }
 
-#container {
-    width: auto;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px 40px;
-    border: solid 0px black;
+form .field, form .actions {
+  margin: 12px 0;
+}
+
+#recipes {
+  h2 {
+    font-size: 18px;
     margin-top: 20px;
+    margin-bottom: 5px;
+  }
+  p { margin: 5px 0; }
+  .info {
+    font-style: italic;
+  }
 }
 
-#flash_notice, #flash_error, #flash_alert {
-    padding: 5px 8px;
-    margin: 10px 0;
-}
-
-#flash_notice {
-    background-color: #CFC;
-    border: solid 1px #6C6;
-}
-
-#flash_error, #flash_alert {
-    background-color: #FCC;
-    border: solid 1px #C66;
-}
-
-.fieldWithErrors {
-    display: inline;
-}
-
-.error_messages {
-    width: 400px;
-    border: 2px solid #CF0000;
-    padding: 0px;
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    font-size: 12px;
-}
-
-.error_messages h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 10px;
-    font-size: 12px;
-    margin: 0;
-    background-color: #c00;
-    color: #fff;
-}
-
-.error_messages p {
-    margin: 8px 10px;
-}
-
-.error_messages ul {
-    margin: 0;
-}

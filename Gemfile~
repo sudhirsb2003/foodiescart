@@ -11,7 +11,12 @@ gem 'therubyracer'
 gem 'devise'
 gem 'nested_form'
 gem 'rails3-jquery-autocomplete'
+gem 'skeleton-rails'
+gem 'paperclip'
+gem 'nifty-generators'
+gem 'fancybox-rails'
 gem 'activeadmin'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

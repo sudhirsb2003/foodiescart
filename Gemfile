@@ -11,10 +11,18 @@ gem 'therubyracer'
 gem 'devise'
 gem 'nested_form'
 gem 'rails3-jquery-autocomplete'
-gem 'activeadmin'
 gem 'skeleton-rails'
 gem 'paperclip'
 gem 'nifty-generators'
+gem 'fancybox-rails'
+gem "friendly_id", "~> 4.0.1"
+gem 'activeadmin'
+gem 'activemerchant', :require => 'active_merchant'
+gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'kaminari'
+
+
+
 
 # Gems used only for assets and not required
 # in production environments by default.

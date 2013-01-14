@@ -1,35 +1,37 @@
-<h1>Listing recipes</h1>
+<h1>Recipes</h1>
+<style>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Category</th>
-    <th>Difficulty level</th>
-    <th>Cooking time</th>
-    <th>Preparation method</th>
-    <th>Author name</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
 
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= recipe.category %></td>
-    <td><%= recipe.difficulty_level %></td>
-    <td><%= recipe.cooking_time %></td>
-    <td><%= recipe.preparation_method %></td>
-    <td><%= recipe.author_name %></td>
-    <td><%= recipe.user_id %></td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Recipe', new_recipe_path %>
+</style>
+<div id="tag_cloud">
+  <% tag_cloud Recipe.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
+<div id="recipes">
+  <% @recipes.each do |recipe| %>
+    <h2><%= link_to recipe.name, recipe %></h2>
+        <% if recipe.photo.exists? then %>
+	  <%= image_tag recipe.photo.url(:thumb) %>
+        <% end %>
+    <%= simple_format recipe.preparation_method %>
+    <p>
+      Tags: <%= raw recipe.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    </p>
+    <p><%= link_to "Edit", edit_recipe_path(recipe) %> | 
+       <%= link_to 'Remove', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></p><hr>
+  <% end %>
+</div>
+<%= paginate @recipes %>
+<p><%= button_to "New Recipe", new_recipe_path, :method => :get  %></p>
+

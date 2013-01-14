@@ -2,11 +2,10 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @recipes }
+    if params[:tag]
+      @recipes = Recipe.tagged_with(params[:tag]).page params[:page]
+    else
+      @recipes = Recipe.order(:name).page params[:page]
     end
   end
 
@@ -14,23 +13,13 @@ class RecipesController < ApplicationController
   # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
-    #@recipe.ingredient_recipe
-    #@product = Product.find_all_by_ingrdient_id(i)
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @recipe }
-    end
+    @similar_recipes = Recipe.tagged_with(@recipe.tag_list)
   end
 
   # GET /recipes/new
   # GET /recipes/new.json
   def new
     @recipe = Recipe.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @recipe }
-    end
   end
 
   # GET /recipes/1/edit

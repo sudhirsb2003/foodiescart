@@ -1,7 +1,19 @@
 Foodiescart2::Application.routes.draw do
+  
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+
+  resources :carts
+  resources :current_cart, :controller => "carts", :action=>"show", :id =>"current",  :as => "current_cart"
+  resources :orders
+
+  resources :line_items
+ # get 'tags/:tag', to: 'recipes#show', as: :tag
+  get 'tags/:tag', to: 'recipes#index', as: :tag
+
+#  devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
 
   devise_for :users
 

@@ -1,20 +1,41 @@
-<p id="notice"><%= notice %></p>
+<style>
+ .ingredient{
+            border:0px solid black;
+            width :400px;
+            padding :4px;
+            }
 
-<p>
-  <b>Ingredient:</b>
-  <%= @product.ingredient_name %>
+ hr {
+     margin:0px;
+     width:500px;      
+     }
+
+</style>
+
+<% if @product.photo.exists? then %>
+  <%= image_tag @product.photo.url(:large) %>
+<% end %>
+
+  <h1><%= @product.ingredient.name %></h1><hr>
+  <p class="ingredient">
+  <%= @product.ingredient.decsription %><br><br>
+  <h3> Calorie Value :<%= @product.ingredient.calorie_value %><br></h3>
 </p>
+<hr>
+<pre>
+<table><tr>
+  <th>Brand:</th>
+  <th> Company Name </th>
+  <th> Price </th></tr><tr>
+  <td><%= @product.brand.name %></td>
+  <td><%= @product.brand.company_name %></td>
+  <td><%= @product.price %></td>
+</tr></table>
+</pre>
 
-<p>
-  <b>Brand:</b>
-  <%= @product.brand_name %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
 
 
+
+<%= link_to "BUY", line_items_path(:product_id => @product), :method => :post, :class=>"fancybox" %> | 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
