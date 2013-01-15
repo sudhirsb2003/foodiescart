@@ -18,12 +18,13 @@
   <% end %>
   <tr>
     <td class="total price" colspan="4">
-      <b style ="margin-left:980px"> Total: <%= number_to_currency @cart.total_price %> </b>
+      <b style ="margin-left:960px"> Total: <%= number_to_currency @cart.total_price %> </b>
     </td>
   </tr>
 </table>
 
 <p>
   <%= link_to "Continue Shopping", products_url %> |
-  <%= link_to "Checkout", @cart.paypal_url(products_url) %>
+<!--  <%= link_to "Checkout", @cart.paypal_url(products_url) %> ->
+  <%= link_to "checkout", new_order_path %>
 </p>

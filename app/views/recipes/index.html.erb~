@@ -1,5 +1,17 @@
 <h1>Recipes</h1>
+<style>
 
+#tag_cloud {
+  width: 400px;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}
+
+
+
+</style>
 <div id="tag_cloud">
   <% tag_cloud Recipe.tag_counts, %w[s m l] do |tag, css_class| %>
     <%= link_to tag.name, tag_path(tag.name), class: css_class %>
@@ -20,6 +32,6 @@
        <%= link_to 'Remove', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></p><hr>
   <% end %>
 </div>
-
+<%= paginate @recipes %>
 <p><%= button_to "New Recipe", new_recipe_path, :method => :get  %></p>
 

@@ -3,6 +3,8 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Foodies Cart" %></title>
     <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Oswald' %>
+    <%= stylesheet_link_tag "demo.css", "style_common.css", "style1.css" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
@@ -10,15 +12,17 @@
   <body>
     <div id="container">
 
-<header><b style="float:right">
+<div class="header">
+<strong style="float:right;color:white;padding-left:-20px;">
   <% if user_signed_in? %>
-    <%= current_user.email %>
-    <%= link_to "Logout", destroy_user_session_path, :method=>:delete %>
+    <%= current_user.email %> | 
+    <%= link_to "LOGOUT", destroy_user_session_path, :method=>:delete %>
   <% else %>
     <%= link_to "Login", new_user_session_path %> | 
     <%= link_to "Register", new_user_registration_path %>
-  <% end %></b>
-</header>
+  <% end %></strong>
+ <div class="clr"></div>
+</div><br>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
