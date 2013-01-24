@@ -51,6 +51,25 @@ class LineItemsController < ApplicationController
     redirect_to current_cart_url
   end
 
+def selected
+    @product = Product.find(params[:product_ids])
+     @product.each do |p|
+
+ 
+    @line_item = p.line_items.create(params[:line_item])
+    @line_item.cart = current_cart
+logger.info"@@@@@@@@@@@@@@"+@line_item.inspect
+    @line_item.product = p
+    @line_item.quantity = 12
+    @line_item.save 
+    end
+    #flash[:notice] = "Added #{@product.ingredient.name} to cart."
+    redirect_to current_cart_url
+
+end
+
+
+
   # PUT /line_items/1
   # PUT /line_items/1.json
   def update

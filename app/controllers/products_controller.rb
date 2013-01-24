@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @line_items = LineItem.new
 
     respond_to do |format|
       format.html # index.html.erb

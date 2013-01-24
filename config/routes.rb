@@ -11,14 +11,19 @@ Foodiescart2::Application.routes.draw do
   resources :carts
   resources :current_cart, :controller => "carts", :action=>"show", :id =>"current",  :as => "current_cart"
   resources :orders
-
-  resources :line_items
- # get 'tags/:tag', to: 'recipes#show', as: :tag
-  get 'tags/:tag', to: 'recipes#index', as: :tag
+  
+  resources :line_items do 
+   collection do 
+     post :selected
+   end
+ end
+   get 'tags/:tag', to: 'recipes#index', as: :tag
 
 #  devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
 
   devise_for :users
+
+  #post 'line_items/selected'
 
   resources :brands
 
