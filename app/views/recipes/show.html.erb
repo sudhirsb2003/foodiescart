@@ -63,7 +63,7 @@
              <tr>
               <td><%= p.brand.name %></td>
               <td><%= p.price %></td>
-              <td><b><%= link_to "BUY", p, :class=>"button_example" %></b></td>
+              <td><b><%= link_to "BUY",product_path(p, :recipe_id => @recipe.id), :class=>"button_example" %></b></td>
             </tr><% end %></table>
       <% end %>
 

@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     @order.ip_adress = request.remote_ip
     if @order.save
       if @order.purchase
-        render :action => "success"
+        redirect_to root_url
       else
         render :action => "failure"
       end

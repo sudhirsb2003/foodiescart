@@ -18,8 +18,8 @@
 
   <div class="field">
     <%= f.label :ingredient_name %><br />
-    <%= f.autocomplete_field :ingredient_name, autocomplete_ingredient_name_products_path  %>
-   <!--<%= f.collection_select :ingredient_id, Ingredient.find(:all), :id, :name %>-->
+   <!-- <%= f.autocomplete_field :ingredient_name, autocomplete_ingredient_name_products_path  %>-->
+   <%= f.collection_select :ingredient_id, Ingredient.find(:all), :id, :name %>
   </div>
   <div class="field">
     <%= f.label :brand_id %><br />

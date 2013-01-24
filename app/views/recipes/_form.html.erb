@@ -56,7 +56,7 @@
   <%= task_form.link_to_remove "Remove this ingredient" %>
 <% end %><br>
 </div>
-
+<%= f.hidden_field :user_id , :value=>current_user.id  %>
 <br><br>
   <div class="actions">
     <%= f.submit %>

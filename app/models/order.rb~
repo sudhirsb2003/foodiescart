@@ -34,7 +34,7 @@ class Order < ActiveRecord::Base
   
   def process_purchase
     if express_token.blank?
-      STANDARD_GATEWAY.purchase(price_in_cents, credit_card, standard_purchase_options)
+      self.purchase(price_in_cents, credit_card, standard_purchase_options)
     else
       EXPRESS_GATEWAY.purchase(price_in_cents, express_purchase_options)
     end
@@ -42,7 +42,6 @@ class Order < ActiveRecord::Base
   
   def standard_purchase_options
     {
-      :ip => ip_address,
       :billing_address => {
         :name     => "Ryan Bates",
         :address1 => "123 Main St.",
@@ -75,9 +74,9 @@ class Order < ActiveRecord::Base
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
       :type               => card_type,
       :number             => "4111111111111111",
-      :verification_value => card_verification,
+      :verification_value => 1232,
       :month              => 8,
-      :year               => 2006,
+      :year               => 2016,
       :first_name         => 'Longbob',
       :last_name          => 'Longsen'
     )
