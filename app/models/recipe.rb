@@ -8,9 +8,18 @@ class Recipe < ActiveRecord::Base
  has_many :ingredient_recipes
  belongs_to :category
  accepts_nested_attributes_for :ingredient_recipes
+# before_create :product_empty
+ validates :author_name, :presence => true
+
 
   extend FriendlyId
   friendly_id :name, use: :slugged
+   
+ # def product_empty
+ #   if products.empty?
+ #     errors.add(:base, 'Products not  present in database ')
+ #   end 
+ # end
 
 has_attached_file :photo,
      :styles => {

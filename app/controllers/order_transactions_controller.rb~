@@ -1,0 +1,14 @@
+class OrderTransactionsController < InheritedResources::Base
+def new 
+@order_transction = OrderTransaction.new
+end
+
+
+
+def create 
+    @transaction = OrderTransaction.create(params[:order_transaction])
+    @line_item = LineItem.find(params[:line_item])
+    @trasaction.product_id =  line_item.product_id
+    @transaction = OrderTransaction.save
+  end
+ 

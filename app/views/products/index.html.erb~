@@ -9,17 +9,20 @@
   </tr> 
   
 <%= form_tag selected_line_items_path, :method=> :post do  %>
-  <% @products.each do |p| %>
+<table>
+ <% @products.each do |p| %>
     <tr>
-     <td><%= check_box_tag('product[product_ids][]', p.id) %></td>
+     <!--<td><%= check_box_tag('[product_ids][]', p.id) %></td>-->
+     <td><%= text_field_tag 'quantity' %></td>
      <td><%= p.ingredient.name %></td>
      <td><%= p.brand.name %></td>
      <td><%= p.price %></td>
     </tr>
   <% end %>
- </table>
- <%= submit_tag "buy Selected items"%>
-<% end %>
+  </table>
+    <%= submit_tag "buy Selected items"%>
+ <% end %>
+
 <br />
 
 <%= link_to 'New Product', new_product_path %>

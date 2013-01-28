@@ -1,9 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Cart:</b>
-  <%= @order.cart_id %>
-</p>
 
 <p>
   <b>Ip adress:</b>
@@ -31,10 +25,46 @@
 </p>
 
 <p>
+  <b>Card Number:</b>
+  <%= @order.card_number %>
+</p>
+
+<p>
   <b>Card expires on:</b>
   <%= @order.card_expires_on %>
 </p>
 
+<p>
+  <b>Products:</b>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<table id="line_items">
+  <tr>
+    <td>Product</td>
+    <td>Brand</td>
+    <td>Qty</td>
+    <td class="price">Unit Price</td>
+    <td class="price">Full Price</td>
+  </tr>
+  <% for line_item in @order.cart.line_items %>
+    <tr class="<%= cycle :odd, :even %>">
+      <td><%=h line_item.product.ingredient.name %></td>
+      <td><%=h line_item.product.brand.name %></td>
+      <td class="qty"><%= line_item.quantity %></td>
+      <td class="price"><%= number_to_currency(line_item.product.price) %></td>
+      <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+    </tr>
+  <% end %>
+
+  <tr>
+    <td class="total price" colspan="4">
+      <br><b style ="margin-left:395px"> Total: <%= number_to_currency @order.cart.total_price %> </b>
+    </td>
+  </tr>
+
+</table>
+
+</p>
+
+
+
+<%= link_to 'BUY MORE', products_path %>

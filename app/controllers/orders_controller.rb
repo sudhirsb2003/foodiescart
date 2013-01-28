@@ -1,28 +1,35 @@
 class OrdersController < ApplicationController
-  def express
-    response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents,
-      :ip                => request.remote_ip,
-      :return_url        => new_order_url,
-      :cancel_return_url => products_url
-    )
-    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+  before_filter :current_cart
+
+  def index
+   @orders = Order.all
   end
+
+  def show
+   @order = Order.find(params[:id])
+  end
+
+#  def express
+#    response = EXPRESS_GATEWAY.setup_purchase(current_cart.build_order.price_in_cents,
+#      :ip                => request.remote_ip,
+#      :return_url        => new_order_url,
+#      :cancel_return_url => products_url
+#    )
+#    redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
+#  end
   
   def new
     @order = Order.new(:express_token => params[:token])
   end
   
   def create
-    @order = current_cart.orders.build(params[:order])
+    @order = Order.create(params[:order])
+    @order.cart = Cart.find(session[:cart_id])
     @order.ip_adress = request.remote_ip
-    if @order.save
-      if @order.purchase
-        redirect_to root_url
-      else
-        render :action => "failure"
-      end
-    else
-      render :action => 'new'
-    end
+    @order.save
+    #ReceiptsMailer.purchase_confirmation(@order).deliver
+    reset_session
+    redirect_to order_path(@order), :notice => "Thank you , Your Order has Completed Successfully."
   end
+
 end

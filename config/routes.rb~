@@ -1,8 +1,9 @@
 Foodiescart2::Application.routes.draw do
   
 
-  resources :order_transactions
-
+  resources :order_transactions do
+   match ':order_transaction(/:action =>:transact(/:@cart.id))'
+ 
 
   ActiveAdmin.routes(self)
 
@@ -15,7 +16,7 @@ Foodiescart2::Application.routes.draw do
   resources :line_items do 
    collection do 
      post :selected
-   send
+   end
  end
    get 'tags/:tag', to: 'recipes#index', as: :tag
 
@@ -42,6 +43,7 @@ Foodiescart2::Application.routes.draw do
 
   resources :recipes
   resources :dashboards
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
