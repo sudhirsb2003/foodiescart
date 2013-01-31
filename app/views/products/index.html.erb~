@@ -7,22 +7,21 @@
     <th>Brand</th>
     <th>Price</th>
   </tr> 
-  
+<% if !@products.blank? %>  
 <%= form_tag selected_line_items_path, :method=> :post do  %>
-<table>
  <% @products.each do |p| %>
     <tr>
-     <!--<td><%= check_box_tag('[product_ids][]', p.id) %></td>-->
-     <td><%= text_field_tag 'quantity' %></td>
+     <td><%= check_box_tag('[product_ids][]', p.id) %></td>
      <td><%= p.ingredient.name %></td>
      <td><%= p.brand.name %></td>
      <td><%= p.price %></td>
+     <td><%= link_to 'show', p %>
     </tr>
   <% end %>
   </table>
     <%= submit_tag "buy Selected items"%>
  <% end %>
-
+<% end %>
 <br />
 
 <%= link_to 'New Product', new_product_path %>

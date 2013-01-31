@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :brand_id, :ingredient_id, :price, :photo, :ingredient_name,:commision
+  attr_accessible :brand_id, :ingredient_id, :price, :photo, :ingredient_name, :commision, :user_id 
   belongs_to :brand
   belongs_to :ingredient
 

@@ -43,11 +43,11 @@ class LineItemsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @line_item = LineItem.create(params[:line_item])
-    @recipe = Recipe.find(params[:recipe_id])
+    #@recipe = Recipe.find(params[:recipe_id])
     @line_item.cart = current_cart
-    @line_item.recipe_id = @recipe.id
+    #@line_item.recipe_id = @recipe.id
     @line_item.product = @product
-    @line_item.quantity = 12
+    @line_item.quantity = 10
     @line_item.save 
     flash[:notice] = "Added #{@product.ingredient.name} to cart."
     redirect_to current_cart_url

@@ -1,4 +1,8 @@
 
+<style>
+@font-face { font-family: "WebRupee"; font-style: normal; font-weight: normal; src: local("WebRupee"), url("http://cdn.webrupee.com/WebRupee.V2.0.ttf") format("truetype"), url("http://cdn.webrupee.com/WebRupee.V2.0.woff") format("woff"), url("http://cdn.webrupee.com/WebRupee.V2.0.svg") format("svg"); } .WebRupee { font-family: 'WebRupee'; }
+</style>
+
 <p>
   <b>Ip adress:</b>
   <%= @order.ip_adress %>
@@ -44,14 +48,17 @@
     <td>Qty</td>
     <td class="price">Unit Price</td>
     <td class="price">Full Price</td>
+    <td class="price">Commision</td>
   </tr>
   <% for line_item in @order.cart.line_items %>
     <tr class="<%= cycle :odd, :even %>">
-      <td><%=h line_item.product.ingredient.name %></td>
-      <td><%=h line_item.product.brand.name %></td>
-      <td class="qty"><%= line_item.quantity %></td>
-      <td class="price"><%= number_to_currency(line_item.product.price) %></td>
-      <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+     <td><%=h line_item.product.ingredient.name %></td>
+     <td><%=h line_item.product.brand.name %></td>
+     <td class="qty"><%= line_item.quantity %></td>
+     <td class="price"><%= number_to_currency(line_item.product.price) %></td>
+     <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+     <td class="price"><%= number_to_currency(((line_item.product.price) *(line_item.product.commision/100))*(line_item.quantity)) %></td>
+     <%= @order.commision %>
     </tr>
   <% end %>
 
@@ -67,4 +74,4 @@
 
 
 
-<%= link_to 'BUY MORE', orders_path %>
+<%= link_to 'BUY MORE', products_path %>

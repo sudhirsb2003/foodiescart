@@ -2,7 +2,7 @@ class LineItem < ActiveRecord::Base
   attr_accessible :cart_id, :order_id, :product_id, :quantity
 
   belongs_to :order
-  has_and_belongs_to_many :products
+  belongs_to :product
   belongs_to :cart
 
   def total_price

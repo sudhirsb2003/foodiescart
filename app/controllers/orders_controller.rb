@@ -27,6 +27,13 @@ class OrdersController < ApplicationController
     @order.cart = Cart.find(session[:cart_id])
     @order.ip_adress = request.remote_ip
     @order.save
+     if @order.save
+      @wallet = Wallet.create(params[:wallet])
+       @wallet.order_id = @order.id
+       @wallet.cart_id = current_cart.id
+       @wallet.commision = @order.commision
+      @wallet.save
+     end
     #ReceiptsMailer.purchase_confirmation(@order).deliver
     reset_session
     redirect_to order_path(@order), :notice => "Thank you , Your Order has Completed Successfully."
