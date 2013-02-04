@@ -9,4 +9,10 @@ class LineItem < ActiveRecord::Base
     product.price * quantity
   end
 
+ def commision
+   ((product.commision/100)*(quantity)*product.price).to_s
+ end
+
+ 
+
 end

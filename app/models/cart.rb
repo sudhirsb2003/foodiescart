@@ -16,12 +16,16 @@ class Cart < ActiveRecord::Base
     line_items.to_a.sum{|item| item.total_price}
   end
 
-
-  def total_price
-    # convert to array so it doesn't try to do sum on database directly
-    line_items.to_a.sum(&:total_price)
-  end
   
+
+ # def total_price
+    # convert to array so it doesn't try to do sum on database directly
+ #   line_items.to_a.sum(&:total_price)
+ # end
+  
+
+
+
   def paypal_url(return_url)
     values = {
       :business => 'seller_1229899173_biz@railscasts.com',

@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
       @wallet = Wallet.create(params[:wallet])
        @wallet.order_id = @order.id
        @wallet.cart_id = current_cart.id
-       @wallet.commision = Order.commision
+       #@wallet.commision = @order.commision
       @wallet.save
      end
     #ReceiptsMailer.purchase_confirmation(@order).deliver

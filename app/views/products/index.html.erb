@@ -1,5 +1,4 @@
 <h1>Listing products</h1>
-
 <table>
   <tr>
     <th>select action </th>
@@ -7,6 +6,7 @@
     <th>Brand</th>
     <th>Price</th>
   </tr> 
+
 <% if !@products.blank? %>  
 <%= form_tag selected_line_items_path, :method=> :post do  %>
     <%= submit_tag "buy Selected items"%>

@@ -6,9 +6,12 @@ class Order < ActiveRecord::Base
                   :last_name, :express_token
 
   belongs_to :cart  
+  has_many :line_items
 
-  def commision
-   (current_cart.product.price *(current_cart.product.commision/100))*(quantity)
-  end
+  def total_commision   
+   self.cart.line_items.each do |f|
+    f.inspect
+end
+end
 
 end 
