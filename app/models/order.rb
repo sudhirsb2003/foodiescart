@@ -8,10 +8,6 @@ class Order < ActiveRecord::Base
   belongs_to :cart  
   has_many :line_items
 
-  def total_commision   
- cart.line_items.each do |f|
-    line_item.commision
-end
-end
+
 
 end 

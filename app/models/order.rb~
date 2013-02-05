@@ -9,8 +9,8 @@ class Order < ActiveRecord::Base
   has_many :line_items
 
   def total_commision   
-   self.cart.line_items.each do |f|
-    f.inspect
+ cart.line_items.each do |f|
+    line_item.commision
 end
 end
 
