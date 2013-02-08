@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Brand', new_brand_path, :class=> "button" %>
+<%= link_to 'New Brand', new_brand_path %>

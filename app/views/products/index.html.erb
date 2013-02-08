@@ -9,7 +9,7 @@
 
 <% if !@products.blank? %>  
 <%= form_tag selected_line_items_path, :method=> :post do  %>
-    <%= submit_tag "buy Selected items"%>
+    <%= submit_tag "buy Selected items", :class=> "button" %>
  <% @products.each do |p| %>
     <tr>
      <td><%= check_box_tag('[product_ids][]', p.id) %></td>
@@ -25,6 +25,6 @@
 <% end %>
 <br />
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_product_path, :class=> "button" %>
 
 

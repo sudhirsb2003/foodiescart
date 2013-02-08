@@ -1,6 +1,8 @@
 Foodiescart2::Application.routes.draw do
   
 
+  get "wallets/show"
+
   resources :order_transactions do
    match ':order_transaction(/:action =>:transact(/:@cart.id))'
  end
@@ -12,15 +14,15 @@ Foodiescart2::Application.routes.draw do
   resources :carts
   resources :current_cart, :controller => "carts", :action=>"show", :id =>"current",  :as => "current_cart"
   resources :orders
-  
+  resources :wallets
   resources :line_items do 
    collection do 
      post :selected
    end
- end
+  end
    get 'tags/:tag', to: 'recipes#index', as: :tag
 
-#  devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
+  #devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
 
   devise_for :users
 
@@ -34,11 +36,11 @@ Foodiescart2::Application.routes.draw do
   end
   
   resources :ingredients do 
-        get :autocomplete_ingredient_name, :on => :collection
+   get :autocomplete_ingredient_name, :on => :collection
   end
 
   resources :ingredient_recipes do
-     get :autocomplete_ingredient_name, :on => :collection
+   get :autocomplete_ingredient_name, :on => :collection
   end
 
   resources :recipes

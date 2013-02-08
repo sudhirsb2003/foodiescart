@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Decsription</th>
     <th>Calorie value</th>
     <th></th>
     <th></th>
@@ -13,7 +12,6 @@
 <% @ingredients.each do |ingredient| %>
   <tr>
     <td><%= ingredient.name %></td>
-    <td><%= ingredient.decsription %></td>
     <td><%= ingredient.calorie_value %></td>
     <td><%= link_to 'Show', ingredient %></td>
     <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
@@ -24,4 +22,7 @@
 
 <br />
 
-<%= link_to 'New Ingredient', new_ingredient_path %>
+<%= button_to 'New Ingredient', new_ingredient_path, :method => :get, :class=>"loop" %>
+
+
+

@@ -1,6 +1,6 @@
 /* General Demo Style */
 body{
-    background:#f9f9f9
+        background:#f9f9f9
 	color: #333;
 	font-family: 'Oswald', Arial, sans-serif;
 	font-size: 13px;
@@ -17,7 +17,7 @@ a{
 	clear: both;
 }
 .main{
-	position:relative;
+    position:relative;
     width:680px;
     margin: 0 auto;
 }
@@ -111,3 +111,33 @@ h1 span{
 	background:#000;
 	color:#fff;
 }
+
+button {
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid #d4d4d4;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff;
+    font:11px/normal sans-serif;
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -ms-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -moz-background-clip: padding; /* for Firefox 3.6 */
+    background-clip: padding-box;
+    border-radius: 0.2em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+

@@ -27,7 +27,7 @@
 <div id ="similar-recipes" style ="padding:10px;width:300px;float:right;border:1px solid black;border-radius:5px;">
 <h2 style="padding-left:30px;">Similar Recepies </h2><hr>
   <% @similar_recipes.each do |s| %>
-   <p><%= image_tag(s.photo.url(:small)) %></p>
+   <p><%= image_tag(s.photo.url(:thumb)) %></p>
       <h2><%= link_to s.name, s %> __ <%= s.author_name %></h2><hr>
   <% end %><br>
   

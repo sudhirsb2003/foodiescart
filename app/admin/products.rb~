@@ -34,7 +34,7 @@ show do |product|
   sidebar :product_stats, :only => :show do
     attributes_table_for resource do
       row("Total Sold")  { Order.find_with_product(resource).count }
-      #row("Dollar Value"){ number_to_currency LineItem.where(:product_id => resource.id).sum(:total_price) }
+      row("Dollar Value"){ number_to_currency LineItem.where(:product_id => resource.id).sum(:total_price) }
     end
   end
 

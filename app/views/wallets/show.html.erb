@@ -1,0 +1,12 @@
+<table >
+<tr>
+<td> order id   </td>
+<td> commission   </td>
+ </tr>
+<% @wallet.each do |j| %>
+<tr>
+<td><%=  j.order_id   %></td>
+<td><%=  j.commission  %></td>
+</tr>
+<% end %>
+</table>

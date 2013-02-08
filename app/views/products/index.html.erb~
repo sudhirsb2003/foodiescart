@@ -9,10 +9,10 @@
 
 <% if !@products.blank? %>  
 <%= form_tag selected_line_items_path, :method=> :post do  %>
-    <%= submit_tag "buy Selected items"%>
+    <%= submit_tag "buy Selected items", :class=> "button" %>
  <% @products.each do |p| %>
     <tr>
-     <td><%= check_box_tag('[product_ids][]', p.id, :id=>"toggle") %></td>
+     <td><%= check_box_tag('[product_ids][]', p.id) %></td>
      <td><%= p.ingredient.name %></td>
      <td><%= p.brand.name %></td>
      <td><%= p.price %></td>

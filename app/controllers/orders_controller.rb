@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_filter :current_cart
 
   def index
-   @orders = Order.all
+   @orders = Order.find_all_by_user_id(current_user)
   end
 
   def show
@@ -28,12 +28,15 @@ class OrdersController < ApplicationController
     @order.ip_adress = request.remote_ip
     @order.save
      if @order.save
+       current_cart.line_items.each do |e|
       @wallet = Wallet.create(params[:wallet])
        @wallet.order_id = @order.id
        @wallet.cart_id = current_cart.id
-       #@wallet.commision = @order.commision
+       @wallet.commission = @order.total_commision.to_s
+       @wallet.user_id = e.product.user_id
       @wallet.save
      end
+end
     #ReceiptsMailer.purchase_confirmation(@order).deliver
     reset_session
     redirect_to order_path(@order), :notice => "Thank you , Your Order has Completed Successfully."

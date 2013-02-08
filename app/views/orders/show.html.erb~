@@ -43,12 +43,12 @@
 
 <table id="line_items">
   <tr>
-    <td>Product</td>
-    <td>Brand</td>
-    <td>Qty</td>
-    <td class="price">Unit Price</td>
-    <td class="price">Full Price</td>
-    <td class="price">Commision</td>
+    <td><b>Product</td>
+    <td><b>Brand</td>
+    <td><b>Qty</td>
+    <td class="price"><b>Unit Price</b></td>
+    <td class="price"><b>Full Price</b></td>
+    <td class="price"><b>Commision</b></td>
   </tr>
   <% for line_item in @order.cart.line_items %>
     <tr class="<%= cycle :odd, :even %>">
@@ -57,18 +57,20 @@
      <td class="qty"><%= line_item.quantity %></td>
      <td class="price"><%= number_to_currency(line_item.product.price) %></td>
      <td class="price"><%= number_to_currency(line_item.total_price) %></td>
-     <td class="price"><%= number_with_precision(line_item.commision, :precision => 2) %></td>
+     <td class="price"><%= number_with_precision(line_item.rate, :precision => 2) %></td>
 
     </tr>
   <% end %>
+</table>
 
+<table>
   <tr>
-    <td class="total price" colspan="10">
-      <br><b style ="margin-left:395px"> Total: <%= number_to_currency @order.cart.total_price %> </b>
-      <br><b style ="margin-left:395px"> Total: <%= number_to_currency @order.total_commision %> <br></b>
+    <td>
+      <br><b> Total: <%= number_to_currency @order.cart.total_price %> </b>
+    </td><td>
+      <br><b> Total: <%= number_to_currency @order.total_commision %> </b>
     </td>
   </tr>
-
 </table>
 
 </p>

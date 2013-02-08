@@ -5,8 +5,8 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Foodiescart2"
-
+  config.site_title = "Foodiescart"
+  # config.before_filter :check_user_role
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -147,3 +147,13 @@ ActiveAdmin.setup do |config|
   # Set the CSV builder separator (default is ",")
   # config.csv_column_separator = ','
 end
+
+
+#ActiveAdmin::ResourceController.class_eval do
+#protected
+ 
+#def current_ability
+# @current_ability ||= AdminAbility.new(current_user)
+#end
+
+#end
