@@ -1,7 +1,5 @@
-ActiveAdmin.register_page "Dashboard" do
-
-  content :title => proc{ I18n.t("active_admin.dashboard") } do
-
+ActiveAdmin::Dashboards.build do
+  
     columns do
 
       column do
@@ -75,5 +73,4 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
 
-  end # content
 end

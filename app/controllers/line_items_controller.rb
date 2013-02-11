@@ -59,7 +59,7 @@ def selected
     @line_item = p.line_items.create(params[:line_item])
     @line_item.cart = current_cart    
     @line_item.product = p
-    @line_item.quantity = 12
+    @line_item.quantity = 4
     @line_item.save 
     end
     #flash[:notice] = "Added #{@product.ingredient.name} to cart."

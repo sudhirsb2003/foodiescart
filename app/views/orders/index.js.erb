@@ -1,0 +1,5 @@
+$(".orders").append("<%= escape_javascript(render(@orders)) %>");
+$(".more_link").replaceWith("<%= escape_javascript(
+    link_to_next_page @items, 'View more',
+                        :remote => true,
+                        :id     => :view_more) %>");

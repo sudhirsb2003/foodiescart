@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
   before_filter :current_cart
 
   def index
-   @orders = Order.find_all_by_user_id(current_user)
+   #@orders = Order.all
+   @orders = Order.page(params[:page])
+   last_page = @orders.num_pages
   end
 
   def show

@@ -33,5 +33,5 @@
 <br />
 
 <%= link_to_next_page(@orders, 'next') %>
-<%= paginate @orders %>
+<%= paginate @users %>
 <%= link_to 'New Order', new_order_path %>

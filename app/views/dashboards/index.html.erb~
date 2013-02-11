@@ -1,14 +1,12 @@
 test page</br>
  <% if user_signed_in? %>
-<!--<% @@comm = 0 %>-->
-<% @wallet.each do |j| %>
-<% @@comm = @@comm +  j.commission    %>
-	<% end %>
+  <% @@comm = 0 %>
+   <% @wallet.each do |j| %>
+    <% @@comm = @@comm + j.commission %>
+   <% end %>
+
 Your  Wallet contains 
-<%= number_to_currency(@@comm)  %> <%= link_to "show detail", wallet_path(current_user) %>
+ <%= number_to_currency(@@comm)  %> <%= link_to "show detail", wallet_path(current_user) %>
 <% else  %>
- hi there 
+ hi there. 
 <% end  %>
-
-
-
