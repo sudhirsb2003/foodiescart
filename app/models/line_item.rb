@@ -14,7 +14,7 @@ class LineItem < ActiveRecord::Base
  end
 
  def total_commision
-  puts rate.sum  
+   rate.sum  
  end
 
  

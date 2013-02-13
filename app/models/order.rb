@@ -8,7 +8,8 @@ class Order < ActiveRecord::Base
   has_many :line_items
 
   def total_commision
-   (self.cart.line_items.to_a.sum(&:rate)).sum
+    #(self.cart.line_items.to_a.sum(&:rate)).sum
+    (self.cart.line_items.to_a.sum(&:rate)).sum
   end
 
   scope :in_progress, where("orders.checked_out_at IS NULL")

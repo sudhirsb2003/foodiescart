@@ -1,4 +1,49 @@
-test page</br>
+<H1><i>Latest Recipes</i></H1>
+
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Your website..</title>
+	<link rel="stylesheet" href="yourStyles.css">
+	<link rel="stylesheet" href="photobox/photobox.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src='photobox/photobox.js'></script>
+</head>
+<body>
+	<div id='gallery'>
+		<a href="http://www.somedomain.com/images/image1_large.jpg">
+			<img src="http://www.somedomain.com/images/image1_small.jpg" alt="photo1 title">
+		</a>
+		<a href="http://www.somedomain.com/images/image2_large.jpg">
+			<img src="http://www.somedomain.com/images/image2_small.jpg" alt="photo2 title">
+		</a>
+		<a href="http://www.somedomain.com/images/image3_large.jpg">
+			<img src="http://www.somedomain.com/images/image3_small.jpg" alt="photo3 title">
+		</a>
+		<a href="http://www.somedomain.com/images/image4_large.jpg">
+			<img src="http://www.somedomain.com/images/image4_small.jpg" alt="photo4 title">
+		</a>
+	</div>
+	<script>
+		$('#gallery').photobox('a');
+		// or with a fancier selector and some settings, and a callback:
+		$('#gallery').photobox('a:first', { thumbs:false, time:0 }, imageLoaded);
+		function imageLoaded(){
+			console.log('image has been loaded...');
+		}
+	</script>
+</body> 
+</html>
+
+
+
+
+
+
+
  <% if user_signed_in? %>
   <% @@comm = 0 %>
    <% @wallet.each do |j| %>
@@ -6,7 +51,7 @@ test page</br>
    <% end %>
 
 Your  Wallet contains 
- <%= number_to_currency(@@comm)  %> <%= link_to "show detail", wallet_path(current_user) %>
+ <%= number_to_currency(@@comm) %> <%= link_to "show detail", wallet_path(current_user, :name=> current_user.email) %>
 <% else  %>
  hi there. 
 <% end %>

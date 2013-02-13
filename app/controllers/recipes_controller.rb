@@ -6,7 +6,10 @@ class RecipesController < ApplicationController
     if params[:tag]
       @recipes = Recipe.tagged_with(params[:tag]).page params[:page]
     else
-      @recipes = Recipe.order(:name).page params[:page]
+      #@recipes = Recipe.order(:name).page params[:page]
+      #@recipes = Recipe.order("name").page(params[:page]).per(5)
+      @recipes = Kaminari.paginate_array(Recipe.all).page(params[:page])
+      #@recipes = Recipe.all
     end
   end
 

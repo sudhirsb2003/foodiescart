@@ -10,7 +10,7 @@ class LineItem < ActiveRecord::Base
   end
 
  def rate
-  puts ((product.commision/100)*(quantity)*product.price).to_s
+  ((product.commision/100)*(quantity)*product.price).to_s
  end
 
  def total_commision

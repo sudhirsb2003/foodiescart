@@ -1,26 +1,25 @@
 class Recipe < ActiveRecord::Base
   acts_as_taggable
   acts_as_taggable_on :tag_list
-  paginates_per 2
+  #paginates_per 2
  attr_accessible :author_name, :category_id, :cooking_time, :difficulty_level, :name, :photo,
                  :preparation_method, :user_id, :ingredient_recipes_attributes, :tag_list
 
  has_many :ingredient_recipes
  belongs_to :category
  accepts_nested_attributes_for :ingredient_recipes
-
-validates :author_name, :presence => true,
-
+# before_create :product_empty
+ validates :author_name, :presence => true
 
 
   extend FriendlyId
   friendly_id :name, use: :slugged
    
-def product_empty
-    if products.empty?
-    errors.add(:base, 'Products not  present in database ')
-  end 
-
+ # def product_empty
+ #   if products.empty?
+ #     errors.add(:base, 'Products not  present in database ')
+ #   end 
+ # end
 
 has_attached_file :photo,
      :styles => {

@@ -2,11 +2,8 @@
 <table>
   <tr>
     <th>select action </th>
-   <th>quantity</th>
     <th>Ingredient</th>
-
     <th>Brand</th>
-
     <th>Price</th>
   </tr> 
 
@@ -16,8 +13,7 @@
  <% @products.each do |p| %>
     <tr>
      <td><%= check_box_tag('[product_ids][]', p.id) %></td>
-
- <td><%= p.ingredient.name %></td>
+     <td><%= p.ingredient.name %></td>
      <td><%= p.brand.name %></td>
      <td><%= p.price %></td>
      <td><%= link_to 'show', p %>

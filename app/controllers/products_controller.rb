@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @item = LineItem.new(:product_id => @product.id)
    # @recipe = Recipe.find(params[:recipe_id])
     respond_to do |format|
       format.html # show.html.erb

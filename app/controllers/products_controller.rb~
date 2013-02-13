@@ -18,6 +18,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @item = LineItem.new(:product_id => @product.id)
+logger.info "##########################"+@item.inspect
    # @recipe = Recipe.find(params[:recipe_id])
     respond_to do |format|
       format.html # show.html.erb
@@ -85,3 +87,4 @@ class ProductsController < ApplicationController
     end
   end
 end
+

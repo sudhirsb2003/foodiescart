@@ -1,6 +1,5 @@
 <h1>Recipes</h1>
 <style>
-
 #tag_cloud {
   width: 400px;
   line-height: 1.6em;
@@ -9,11 +8,14 @@
   .l { font-size: 1.8em; }
 }
 
-
-
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    background-color: #123455;
+    margin: 1em 0; padding: 0; }
 </style>
+
 <div id="tag_cloud">
-  <% tag_cloud Recipe.tag_counts, %w[s m l] do |tag, css_class| %>
+  <% tag_cloud Recipe.tag_counts, %w[.s .m .l] do |tag, css_class| %>
     <%= link_to tag.name, tag_path(tag.name), class: css_class %>
   <% end %>
 </div>
@@ -24,7 +26,6 @@
         <% if recipe.photo.exists? then %>
 	  <%= image_tag recipe.photo.url(:thumb) %>
         <% end %>
-    <%= simple_format recipe.preparation_method %>
     <p>
       Tags: <%= raw recipe.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
     </p>
@@ -32,7 +33,6 @@
        <%= link_to 'Remove', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></p><hr>
   <% end %>
 </div>
-<%= paginate @recipes %><br><br>
-
+  <%= paginate @recipes %>
 <p><%= button_to "New Recipe", new_recipe_path, :method => :get, :class=> "button"  %></p>
 

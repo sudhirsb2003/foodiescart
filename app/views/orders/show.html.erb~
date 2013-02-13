@@ -68,13 +68,11 @@
     <td>
       <br><b> Total: <%= number_to_currency @order.cart.total_price %> </b>
     </td><td>
-      <br><b> Total: <%= number_to_currency @order.total_commision %> </b>
+      <br><b> Total Commision: <%= number_to_currency @order.total_commision %> </b>
     </td>
   </tr>
 </table>
 
 </p>
-
-
 
 <%= link_to 'BUY MORE', products_path %>
