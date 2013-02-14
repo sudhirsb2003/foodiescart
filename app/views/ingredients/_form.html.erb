@@ -28,7 +28,7 @@
       <% Brand.all.each do |brand| %>
           <li>
             <%= check_box_tag "brand[brand_ids][]", brand.id, @ingredient.brands.include?(brand) %>
-            <%= label :brand_ids, brand.name %>
+            <%= label :brand_ids, brand.company_name %>
           </li>
       <% end %>
     </ul>

@@ -26,7 +26,7 @@
   <div class="field">
     <%= f.label :brand_id %><br />
     <!--<%= f.autocomplete_field :brand_id, autocomplete_brand_name_products_path %>-->
-    <%= f.collection_select :brand_id, Brand.all , :id , :name %>
+    <%= f.collection_select :brand_id, Brand.all , :id , :company_name %>
   </div>
 
   <div class="field">

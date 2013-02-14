@@ -1,6 +1,7 @@
+@import url('reset.css');
 /* General Demo Style */
 body{
-        background:#f9f9f9
+    background:#f9f9f9 url(../images/white_texture.jpg) repeat top left;
 	color: #333;
 	font-family: 'Oswald', Arial, sans-serif;
 	font-size: 13px;
@@ -9,15 +10,14 @@ body{
 	position:relative;
 }
 a{
-	color: #f00;
-        padding:3px;
+	color: #fff;
 	text-decoration: none;
 }
 .clr{
 	clear: both;
 }
 .main{
-    position:relative;
+	position:relative;
     width:680px;
     margin: 0 auto;
 }
@@ -111,5 +111,3 @@ h1 span{
 	background:#000;
 	color:#fff;
 }
-
-

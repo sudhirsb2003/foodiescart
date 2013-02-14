@@ -57,15 +57,15 @@
 
     <h4><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></h4>
       <% @recipe.ingredient_recipes.each do |i| %>
-        <li><%= link_to i.ingredient_name, i %></li><br>
+        <li><%= link_to i.ingredient_name, i %></li>
           <table>
             <% Product.find_all_by_ingredient_id(i.ingredient).each do |p| %>
              <tr>
-              <td><%= p.brand.name %></td>
+              <td><%= p.brand.company_name %></td>
               <td><%= p.price %></td>
-              <td><b><%= link_to "BUY",product_path(p, :recipe_id => @recipe.id), :class=>"button_example" %></b></td>
-              <td><b><%= link_to "BUY", line_items_path(:product_id => p.id, :recipe_id => @recipe.id) , :method => :post, :class=>"fancybox" %></b></td> 
-            </tr><% end %></table>
+              <td><b><%= link_to "BUY", product_path(p, :recipe_id => @recipe.id), :class=>"button_example" %></b></td>
+           <!--<td><b><%= link_to "BUY", line_items_path(:product_id => p.id, :recipe_id => @recipe.id) , :method => :post %></b></td>-->
+            </tr><% end %></table><hr>
       <% end %>
 
 

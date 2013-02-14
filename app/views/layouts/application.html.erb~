@@ -74,6 +74,7 @@
  <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
  <% end %>
+     <%= link_to image_tag("home.png", :size=>"30x30"), "/" %><b> Foodies cart </b>
       <h2>
         <%= link_to "RECIPE", recipes_path %> |
         <%= link_to "INGEDIENT", ingredients_path %> |

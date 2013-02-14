@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= content_for?(:title) ? yield(:title) : "Foodies Cart" %></title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Original Hover Effects with CSS3" />
+        <meta name="keywords" content="css3, transitions, thumbnail, animation, hover, effect, description, caption" />
+        <meta name="author" content="Alessio Atzeni for Codrops" />
+        <%= stylesheet_link_tag "demo.css","button.css","style_common.css","style4.css" %>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
+    </head>
+
+
+<style>
+        /* ------------------------------------------------------------------------------------------------------------- RESET */
+
+        html, body, div, form, p,
+        code, pre { margin: 0; padding: 0; border: 0; vertical-align: baseline; }
+
+        /* ------------------------------------------------------------------------------------------------------------- TEMPLATE */
+
+
+        a { color: #980905; }
+        a:hover, a:focus, a:active { text-decoration: none; }
+
+        h1 { margin: 0 0 0.5em; font-size: 36px; }
+        h2 { margin: 0 0 0.75em; font-size: 21px; }
+        h3 { margin: 0 0 0.333em; font-size: 16px; font-weight: normal; }
+        p { margin: 0 0 1.333em; }
+        em { font-style: italic; }
+        table {border-collapse: separate; border-spacing: 0; margin: 0; vertical-align: middle; }
+        th { font-weight: bold; }
+        th, td { padding: 5px 25px 5px 5px; text-align: left; vertical-align: middle; }
+        pre, code { font-family: monospace, sans-serif; font-size: 1em; color:#080; }
+
+        /* ------------------------------------------------------------------------------------------------------------- TEMPLATE */
+
+        .container { position:relative; overflow:hidden;padding: 40px 60px; border: 1px solid #ccc; margin: 10px; background: #fff; -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.1); -moz-box-shadow: 0 0 15px rgba(0,0,0,0.1); box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+
+        .container pre,
+        .container .prettyprint { padding: 0; border: 0; margin: 0 0 20px; font-size: 13px; background: #fff; }
+
+        .ribbon { position: absolute; top: -1px; right: -1px; opacity: 0.9; }
+        .ribbon:hover, .ribbon:focus, .ribbon:active { opacity: 1; }
+        .ribbon img { display: block; border: 0; }
+
+        .header { padding-right:80px; }
+
+        .section { margin: 40px 0 20px; }
+
+        .example { padding: 20px; border: 1px solid #ccc; margin: 10px -20px 20px; }
+
+        .footer { margin: 20px 0 50px; font-size: 11px; color: #666; text-align: center; }
+        .footer a { color: #666; }
+    </style>
+
+
+    <body>
+        <div class="container">
+                <span class="right">
+ <% if user_signed_in? %>
+    <b style="float:right"><%= current_user.email %>
+    <%= link_to "LOGOUT", destroy_user_session_path, :method=>:delete %></b>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>  
+    <%= link_to "Register", new_user_registration_path %>
+  <% end %>
+ </span>
+<br>
+
+ <% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+ <% end %>
+     <u><%= link_to image_tag("home.png", :size=>"30x30"), "/" %><b> Foodies cart </b></u>
+      <h2>
+        <%= link_to "RECIPE", recipes_path %> |
+        <%= link_to "INGEDIENT", ingredients_path %> |
+        <%= link_to "BRAND", brands_path %> |
+        <%= link_to "PRODUCTS", products_path %>
+      </h2><hr>
+<% if user_signed_in? %>
+  <% @@comm = 0 %>
+   <% @wallet.each do |j| %>
+    <% @@comm = @@comm + j.commission %>
+   <% end %>
+
+Your  Wallet contains 
+ <%= number_to_currency(@@comm) %> <%= link_to "show detail", wallet_path(current_user, :name=> current_user.email) %>
+<% else  %>
+ hi there. 
+<% end %>
+                <div class="clr"></div>
+            <h3>Latest Recipe</h3>
+            <div class="more">
+            </div>
+            <div class="main"> 
+                <!-- FOURTH EXAMPLE -->
+
+            <% @recipes.each do |r| %>
+                <div class="view view-fourth">
+          	   <%= link_to image_tag(r.photo.url(:small)), r %>
+                    <div class="mask">
+                        <h2><%= r.name %></h2>
+                        <p><%= truncate r.preparation_method %></p>
+                        <%= link_to "Read More", r, :class=>"info" %></a>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+        </div>
+<hr>
+ 
+
+
+    </body>
+</html>

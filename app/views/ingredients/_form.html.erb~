@@ -5,7 +5,7 @@
 
       <ul>
       <% @ingredient.errors.full_messages.each do |msg| %>
-        <li><%=  %></li>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
