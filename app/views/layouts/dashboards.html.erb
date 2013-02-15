@@ -59,13 +59,13 @@
 
     <body>
         <div class="container">
-                <span class="right">
+                <span class="right" style="float:right">
  <% if user_signed_in? %>
-    <b style="float:right"><%= current_user.email %>
+    <b><%= current_user.email %>
     <%= link_to "LOGOUT", destroy_user_session_path, :method=>:delete %></b>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>  
-    <%= link_to "Register", new_user_registration_path %>
+    <b><%= link_to "Login", new_user_session_path %>  
+    <%= link_to "Register", new_user_registration_path %></b>
   <% end %>
  </span>
 <br>

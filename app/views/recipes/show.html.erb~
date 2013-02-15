@@ -65,7 +65,7 @@
               <td><%= p.price %></td>
               <td><b><%= link_to "BUY", product_path(p, :recipe_id => @recipe.id), :class=>"button_example" %></b></td>
            <!--<td><b><%= link_to "BUY", line_items_path(:product_id => p.id, :recipe_id => @recipe.id) , :method => :post %></b></td>-->
-            </tr><% end %></table>
+            </tr><% end %></table><hr>
       <% end %>
 
 

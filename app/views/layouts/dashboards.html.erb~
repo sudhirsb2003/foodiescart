@@ -61,11 +61,11 @@
         <div class="container">
                 <span class="right">
  <% if user_signed_in? %>
-    <b style="float:right"><%= current_user.email %>
+    <b><%= current_user.email %>
     <%= link_to "LOGOUT", destroy_user_session_path, :method=>:delete %></b>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>  
-    <%= link_to "Register", new_user_registration_path %>
+    <b><%= link_to "Login", new_user_session_path %>  
+    <%= link_to "Register", new_user_registration_path %></b>
   <% end %>
  </span>
 <br>
@@ -80,7 +80,17 @@
         <%= link_to "BRAND", brands_path %> |
         <%= link_to "PRODUCTS", products_path %>
       </h2><hr>
+<% if user_signed_in? %>
+  <% @@comm = 0 %>
+   <% @wallet.each do |j| %>
+    <% @@comm = @@comm + j.commission %>
+   <% end %>
 
+Your  Wallet contains 
+ <%= number_to_currency(@@comm) %> <%= link_to "show detail", wallet_path(current_user, :name=> current_user.email) %>
+<% else  %>
+ hi there. 
+<% end %>
                 <div class="clr"></div>
             <h3>Latest Recipe</h3>
             <div class="more">

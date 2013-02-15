@@ -11,12 +11,12 @@
 hr { display: block; height: 1px;
     border: 0; border-top: 1px solid #ccc;
     background-color: #123455;
-    margin: 1em 0; padding: 0; }
+    margin: 1em 0; padding: 1px;width:800px; }
 </style>
 
 <div id="tag_cloud">
   <% tag_cloud Recipe.tag_counts, %w[.s .m .l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %> |
   <% end %>
 </div>
 
