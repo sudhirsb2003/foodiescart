@@ -1,6 +1,9 @@
 Foodiescart2::Application.routes.draw do
   
 
+  resources :comments
+
+
   get "wallets/show"
 
   resources :order_transactions do

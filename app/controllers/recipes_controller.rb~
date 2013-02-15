@@ -6,8 +6,10 @@ class RecipesController < ApplicationController
     if params[:tag]
       @recipes = Recipe.tagged_with(params[:tag]).page params[:page]
     else
-      @recipes = Recipe.order(:name).page params[:page]
-      @recipes = Recipe.all
+      #@recipes = Recipe.order(:name).page params[:page]
+      #@recipes = Recipe.order("name").page(params[:page]).per(5)
+      @recipes = Kaminari.paginate_array(Recipe.all).page(params[:page])
+      #@recipes = Recipe.all
     end
   end
 
@@ -16,6 +18,9 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @similar_recipes = Recipe.tagged_with(@recipe.tag_list)
+    @comment = Comment.new
+    #@comments = Comment.find_all_by_recipe_id(@recipe)
+    @comments = Comment.find_all_by_recipe_id(@recipe, :order => 'created_at ASC')
   end
 
   # GET /recipes/new

@@ -1,8 +1,14 @@
-
+<head>
 <style>
  body{margin:10px;}
-</style>
+ hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    background-color: #123455;
+    margin: 1em 0; padding: 0; }
 
+  h3 {text-align:center;width:300px;background:green;color:white;border:opx solid white; border-radius:4px;}
+</style>
+</head>
 <%- model_class = Recipe -%>
 
 <div class="page-header">
@@ -73,6 +79,32 @@
       <strong><%= model_class.human_attribute_name(:method) %>:</strong>
               <p style="width:800px;"><%= @recipe.preparation_method %></p><br>
     </div>
+
+
+
+
+<h3>Latest comments and suggestions</h3>
+<style>
+ .comments {width:500px;height:auto;}
+ comment{font-size:11px;color:green}
+</style>
+
+<% @comments.each do |c| %>
+<div class="comments">
+  <%= c.user.email %><br>
+  <comment>"<%= c.comment_data %></comment><br>
+   <b style ="font-size:9px;color:red"><%= time_tag c.created_at %></b><hr>
+</div>
+<% end %>
+
+<%= render :partial => 'comments/form', :locals => {:recipe_id => @recipe.id} %>
   </div><!-- /.tab-content -->
+
+
+
+
 </div><!-- /.tabbable -->
+
+
+
 

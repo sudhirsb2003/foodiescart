@@ -18,6 +18,9 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @similar_recipes = Recipe.tagged_with(@recipe.tag_list)
+    @comment = Comment.new
+    #@comments = Comment.find_all_by_recipe_id(@recipe)
+    @comments = Comment.find_all_by_recipe_id(@recipe, :order => 'created_at DESC')
   end
 
   # GET /recipes/new
