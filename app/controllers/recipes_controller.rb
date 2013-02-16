@@ -1,14 +1,17 @@
 class RecipesController < ApplicationController
  before_filter :authenticate_user!
+
   # GET /recipes
   # GET /recipes.json
   def index
+     @recipe = Recipe.search params[:search]
+      logger.info "##############################"+@recipe.inspect
     if params[:tag]
       @recipes = Recipe.tagged_with(params[:tag]).page params[:page]
     else
       #@recipes = Recipe.order(:name).page params[:page]
       #@recipes = Recipe.order("name").page(params[:page]).per(5)
-      @recipes = Kaminari.paginate_array(Recipe.all).page(params[:page])
+      @recipes = Kaminari.paginate_array(Recipe.all).page(params[:page]).per(3)
       #@recipes = Recipe.all
     end
   end

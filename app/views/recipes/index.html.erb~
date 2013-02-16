@@ -1,4 +1,4 @@
-<h1>Recipes</h1>
+<head>
 <style>
 #tag_cloud {
   width: 400px;
@@ -8,31 +8,44 @@
   .l { font-size: 1.8em; }
 }
 
-hr { display: block; height: 1px;
+ #recipes {
+    clear: both;
+    float: left;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+ hr { display: block; height: 1px;width:300px;
     border: 0; border-top: 1px solid #ccc;
     background-color: #123455;
-    margin: 1em 0; padding: 1px;width:800px; }
+    margin: 1em 0; padding: 0; }
 </style>
-
+</head>
 <div id="tag_cloud">
   <% tag_cloud Recipe.tag_counts, %w[.s .m .l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %> ' 
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %> |
   <% end %>
-</div>
-
+</div><hr>
+  <%= paginate @recipes %><br><br>
 <div id="recipes">
   <% @recipes.each do |recipe| %>
-    <h2><%= link_to recipe.name, recipe %></h2>
         <% if recipe.photo.exists? then %>
-	  <%= image_tag recipe.photo.url(:thumb) %>
+     <div id ="image">
+      <%= image_tag recipe.photo.url(:thumb) %></div>
+        <div id="content" style ="margin-top:-110px;margin-left:150px">
+         <h3><%= link_to recipe.name, recipe %></h3>
+           by <%= link_to recipe.user.email, recipe.user.email %><br>
+           Ready in <%= recipe.cooking_time.strftime("%I minutes %M sec") %> mins  
         <% end %>
     <p>
       Tags: <%= raw recipe.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-    </p>
+    </p></div>
     <p><%= link_to "Edit", edit_recipe_path(recipe) %> | 
        <%= link_to 'Remove', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></p><hr>
   <% end %>
 </div>
-  <%= paginate @recipes %>
+
 <p><%= button_to "New Recipe", new_recipe_path, :method => :get, :class=> "button"  %></p>
 

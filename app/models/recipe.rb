@@ -7,10 +7,11 @@ class Recipe < ActiveRecord::Base
 
  has_many :ingredient_recipes
  belongs_to :category
+ belongs_to :user
  accepts_nested_attributes_for :ingredient_recipes
-# before_create :product_empty
+ # before_create :product_empty
  validates :author_name, :presence => true
-
+ 
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -21,12 +22,23 @@ class Recipe < ActiveRecord::Base
  #   end 
  # end
 
+ LEVELS = %w[Easy Difficult Very_Difficult]
+
 has_attached_file :photo,
      :styles => {
        :thumb=> "100x100#",
        :small  => "400x400>" }
 
 
+def self.search(search)
+  #if search
+    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  #else
+   # find(:all)
+  #end
 end
 
 
+
+
+end

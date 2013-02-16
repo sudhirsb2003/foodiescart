@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :difficulty_level %><br />
-    <%= f.text_field :difficulty_level %>
+     <%= select("recipe", "difficulty_level", Recipe::LEVELS, {:include_blank => "Select Level"}) %>
   </div><br>
 
   <div class="field">

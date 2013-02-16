@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :comments
+  has_many :recipes
   
   after_destroy :ensure_an_admin_remains
 

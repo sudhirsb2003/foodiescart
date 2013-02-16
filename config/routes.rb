@@ -3,7 +3,7 @@ Foodiescart2::Application.routes.draw do
 
   resources :comments
 
-
+  get 'recipes/search', :as => :search
   get "wallets/show"
 
   resources :order_transactions do

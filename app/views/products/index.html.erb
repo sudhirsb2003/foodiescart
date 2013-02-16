@@ -8,11 +8,12 @@
   </tr> 
 
 <% if !@products.blank? %>  
-<%= form_tag selected_line_items_path, :method=> :post do  %>
+<%= form_for @line_items, :url => selected_line_items_path, :method=> :post do |f| %>
     <%= submit_tag "buy Selected items", :class=> "button" %>
  <% @products.each do |p| %>
     <tr>
      <td><%= check_box_tag('[product_ids][]', p.id) %></td>
+     <td><%= f.text_field :quantity %>
      <td><%= p.ingredient.name %></td>
      <td><%= p.brand.company_name %></td>
      <td><%= p.price %></td>

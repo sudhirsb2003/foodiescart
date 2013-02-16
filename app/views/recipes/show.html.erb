@@ -1,18 +1,101 @@
-<head>
 <style>
- body{margin:10px;}
+
+#container
+{
+	margin: 0 auto;
+	width: 100%;
+	background: #fff;
+}
+
+#header
+{
+	background: #ccc;
+	padding: 20px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+	float: left;
+	width: 100%;
+	background: #333;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+}
+
+#navigation li a:hover { background: #383; }
+
+#content-container
+{
+	float: left;
+	width: 100%;
+	background: #FFF url(layout-two-liquid-background.gif) repeat-y 68% 0;
+}
+
+#content
+{
+	clear: left;
+	float: left;
+	width: 60%;
+	padding: 20px 0;
+	margin: 0 0 0 4%;
+	display: inline;
+}
+
+#content h2 { margin: 0; }
+
+#aside
+{
+	float: right;
+	width: 26%;
+	padding: 20px 0;
+	margin: 0 3% 0 0;
+	display: inline;
+}
+
+#aside h3 { margin: 0; }
+
+
+
+
+
  hr { display: block; height: 1px;
     border: 0; border-top: 1px solid #ccc;
     background-color: #123455;
     margin: 1em 0; padding: 0; }
+  h3{text-align:center;width:300px;background:green;color:white;border:1px solid white; border-radius:4px;}
+  h5{text-align:center;width:100px;background:green;color:white;border:1px solid white; border-radius:4px;}
 
-  h3 {text-align:center;width:300px;background:green;color:white;border:opx solid white; border-radius:4px;}
 </style>
-</head>
+
+<div id="container">
+	<div id="content-container">
+		<div id="content">
 <%- model_class = Recipe -%>
 
 <div class="page-header">
-  <h1><%= @recipe.name %></h1>
+
   <%= link_to 'Back to List', recipes_path %> | 
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_recipe_path(@recipe), :class => 'btn' %> | 
@@ -28,16 +111,15 @@
 
 <% if @recipe.photo.exists? then %>
    <%= image_tag @recipe.photo.url(:small) %>
+  <h3><%= @recipe.name %></h3>
+    <% if @recipe.tested %>
+       <b>Tested</b> <b><%= @recipe.difficulty_level %></b>
+      <% else %>
+       <b>Not Tested</b> <b><%= @recipe.difficulty_level %></b>
+    <% end %>
 <% end %>
 
-<div id ="similar-recipes" style ="padding:10px;width:300px;float:right;border:1px solid black;border-radius:5px;">
-<h2 style="padding-left:30px;">Similar Recepies </h2><hr>
-  <% @similar_recipes.each do |s| %>
-   <p><%= image_tag(s.photo.url(:thumb)) %></p>
-      <h2><%= link_to s.name, s %> __ <%= s.author_name %></h2><hr>
-  <% end %><br>
-  
-</div>
+
 
 <p>
   <b>Category:</b>
@@ -45,8 +127,7 @@
 </p>
 
 <p>
-  <b>Difficulty level:</b>
-  <%= @recipe.difficulty_level %>
+
 </p>
 
 <p>
@@ -77,13 +158,13 @@
 
     <div id="pane3" class="tab-pane">
       <strong><%= model_class.human_attribute_name(:method) %>:</strong>
-              <p style="width:800px;"><%= @recipe.preparation_method %></p><br>
+              <p style="width:auto;"><%= @recipe.preparation_method %></p><br>
     </div>
 
 
 
 
-<h3>Latest comments and suggestions</h3>
+<h3>Latest comments and suggestions</h3><br>
 <style>
  .comments {width:500px;height:auto;}
  comment{font-size:11px;color:green}
@@ -98,13 +179,18 @@
 <% end %>
 
 <%= render :partial => 'comments/form', :locals => {:recipe_id => @recipe.id} %>
-  </div><!-- /.tab-content -->
+
+</div>
 
 
-
-
-</div><!-- /.tabbable -->
-
-
-
+<div id="aside">
+<div class ="similar-recipes">
+<h5 style="padding-left:0px;">Similar Recepies </h5><hr>
+  <% @similar_recipes.each do |s| %>
+   <p><%= link_to image_tag(s.photo.url(:thumb)), s %></p>
+      <h5><%= s.name %></h5>-- <small><%= s.author_name %></small><hr>
+  <% end %><br>
+  
+</div>
+</div>
 
