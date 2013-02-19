@@ -4,4 +4,5 @@ class Ingredient < ActiveRecord::Base
   validates_uniqueness_of :name, :message => "Name has already been taken"
   has_many :products
   has_many :brands, :through => :products
+  has_many :ingredient_recipes
 end

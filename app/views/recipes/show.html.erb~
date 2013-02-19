@@ -50,7 +50,7 @@
 {
 	float: left;
 	width: 100%;
-	background: #FFF url(layout-two-liquid-background.gif) repeat-y 68% 0;
+	background: #FFF repeat-y 68% 0;
 }
 
 #content
@@ -84,7 +84,7 @@
     border: 0; border-top: 1px solid #ccc;
     background-color: #123455;
     margin: 1em 0; padding: 0; }
-  h3{text-align:center;width:300px;background:green;color:white;border:1px solid white; border-radius:4px;}
+  m{padding:4px;text-align:center;width:300px;background:green;color:white;border:1px solid white; border-radius:4px;}
   h5{text-align:center;width:100px;background:green;color:white;border:1px solid white; border-radius:4px;}
 
 </style>
@@ -110,28 +110,24 @@
 </div>
 
 <% if @recipe.photo.exists? then %>
-   <%= image_tag @recipe.photo.url(:small) %>
-  <h3><%= @recipe.name %></h3>
-    <% if @recipe.tested %>
-       <b>Tested</b> <b><%= @recipe.difficulty_level %></b>
-      <% else %>
-       <b>Not Tested</b> <b><%= @recipe.difficulty_level %></b>
-    <% end %>
+   <%= image_tag @recipe.photo.url(:small) %><br><br>
+  <m><%= @recipe.name %> </m> | 
+   <% if @recipe.tested %>
+    <b>Tested<%= image_tag('right-mark-th.png', :size => "20x20") %></b> | <b><%= @recipe.difficulty_level %></b> | 
+   <% else %>
+    <b style ="color:red"> not tested</b> | <b><%= @recipe.difficulty_level %></b> 
+   <% end %>
 <% end %>
-
-
-
+<br>
+<br>
 <p>
   <b>Category:</b>
   <%= @recipe.category.name %>
 </p>
 
-<p>
-
-</p>
 
 <p>
-  <b>Cooking time:</b>
+  <b><%= image_tag('time.png', :size=>"25x20")%></b>
    <% @t = @recipe.cooking_time %>
    <%= @t.strftime("%I minutes %M sec") %>
 </p>
@@ -141,24 +137,25 @@
   <b>Author name:</b>
   <%= @recipe.author_name %>
 </p>
-
+<div id="ingredients" style="border-radius:4px;padding:20px;background:silver;width:300px;">
     <h4><strong><%= model_class.human_attribute_name(:ingredients) %>:</strong></h4>
       <% @recipe.ingredient_recipes.each do |i| %>
-        <li><%= link_to i.ingredient_name, i %></li>
+        <strong><%= link_to i.ingredient_name, i %></strong>
           <table>
             <% Product.find_all_by_ingredient_id(i.ingredient).each do |p| %>
              <tr>
-              <td><%= p.brand.company_name %></td>
+              <td><%= link_to p.brand.company_name, p.brand %></td>
               <td><%= p.price %></td>
-              <td><b><%= link_to "BUY", product_path(p, :recipe_id => @recipe.id), :class=>"button_example" %></b></td>
+              <td><b><%= link_to "BUY", product_path(p, :recipe_id => @recipe.id), :class=>"button_example" %>
+                  </b></td>
            <!--<td><b><%= link_to "BUY", line_items_path(:product_id => p.id, :recipe_id => @recipe.id) , :method => :post %></b></td>-->
             </tr><% end %></table><hr>
       <% end %>
-
+</div><br>
 
     <div id="pane3" class="tab-pane">
-      <strong><%= model_class.human_attribute_name(:method) %>:</strong>
-              <p style="width:800px;"><%= @recipe.preparation_method %></p><br>
+      <strong style ="color:green"><%= model_class.human_attribute_name(:method) %>:</strong>
+              <p style="width:auto;"><%= @recipe.preparation_method %></p><br>
     </div>
 
 

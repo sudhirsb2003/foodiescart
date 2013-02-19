@@ -69,9 +69,7 @@
 <body onload="prettyPrint()">
 <div class="container">    
 <strong style="float:right;">
-  <div id="search">
-    <%= render :partial => 'recipes/search' %>
-  </div>
+
   <% if user_signed_in? %>
     <%= current_user.email %>
     <%= link_to "LOGOUT", destroy_user_session_path, :method=>:delete %>

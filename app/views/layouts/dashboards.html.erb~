@@ -60,9 +60,6 @@
 <body onload="prettyPrint()">
         <div class="container">
                 <span class="right" style="float:right">
-<div id="search">
-    <%= render :partial => 'grants/search' %>
-  </div>
  <% if user_signed_in? %>
     <b><%= current_user.email %>
     <%= link_to "LOGOUT", destroy_user_session_path, :method=>:delete %></b>

@@ -4,7 +4,7 @@ class CommentsController < InheritedResources::Base
   @comment = Comment.create(params[:comment])
   if @comment.save
    @recipe = @comment.recipe_id
-   redirect_to recipe_path(@recipe), :notice => "JakAS"
+   redirect_to recipe_path(@recipe), :notice => "zaks"
   end
  end 
 

@@ -1,6 +1,9 @@
 Foodiescart2::Application.routes.draw do
   
 
+  resources :profiles
+
+
   resources :comments
 
   get 'recipes/search', :as => :search

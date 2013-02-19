@@ -4,8 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-     @recipe = Recipe.search params[:search]
-      logger.info "##############################"+@recipe.inspect
+     #@recipe = Recipe.search params[:search]
     if params[:tag]
       @recipes = Recipe.tagged_with(params[:tag]).page params[:page]
     else
@@ -15,6 +14,11 @@ class RecipesController < ApplicationController
       #@recipes = Recipe.all
     end
   end
+
+def search 
+ @recipe = Recipe.search params[:search]
+end
+
 
   # GET /recipes/1
   # GET /recipes/1.json

@@ -23,6 +23,7 @@
     margin: 1em 0; padding: 0; }
 </style>
 </head>
+
 <div id="tag_cloud">
   <% tag_cloud Recipe.tag_counts, %w[.s .m .l] do |tag, css_class| %>
     <%= link_to tag.name, tag_path(tag.name), class: css_class %> |

@@ -1,9 +1,13 @@
-<p id="notice"><%= notice %></p>
+<style>
+.related_recipe{ letter-spacing: 0.3em;line-height:2px;padding:4px;border-radius:4px;border:1px solid black;width:auto; height:auto; float:left; overflow:hidden; }
+</style>
 
-<p>
-  <b>Name:</b>
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>
+
+<h2>
   <%= @ingredient.name %>
-</p>
+</h2>
 
 <p>
   <b>Decsription:</b>
@@ -15,7 +19,7 @@
   <%= @ingredient.calorie_value %>
 </p>
 
-<strong>Under the brnad for:</strong>
+<strong>Under the brand:</strong>
 <ul>
   <% @ingredient.brands.each do |brand| %>
       <li><p><%= link_to brand.name, brand %></p></li>
@@ -23,6 +27,11 @@
 </ul>
 <hr>
 
+<h3> Related Recipes of this ingredient </h3><br>
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<% @ingredient.ingredient_recipes.each do |i| %>
+  <b class="related_recipe">
+   <%= link_to image_tag(i.recipe.photo.url(:thumb)), i.recipe %>
+</b> 
+<% end %>
+
