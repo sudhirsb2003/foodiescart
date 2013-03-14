@@ -6,9 +6,12 @@
     <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Oswald' %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tag %>
+    <script type="text/javascript">var switchTo5x=true;</script>  
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> 
+    <script type="text/javascript">stLight.options({publisher: "ur-bc10ed40-a188-b920-e917-a51f8d8964d5", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
     <%= yield(:head) %>
 
-    <style>
+   <style>
         /* ------------------------------------------------------------------------------------------------------------- RESET */
 
         html, body, div, form, p,
@@ -69,6 +72,9 @@
 <body onload="prettyPrint()">
 <div class="container">    
 <strong style="float:right;">
+  <div id="search">
+    <%= render :partial => 'recipes/search' %>
+  </div>
 
   <% if user_signed_in? %>
     <%= current_user.email %>

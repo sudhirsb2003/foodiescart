@@ -154,7 +154,7 @@
 </div><br>
 
     <div id="pane3" class="tab-pane">
-      <strong style ="color:green"><%= model_class.human_attribute_name(:method) %>:</strong>
+      <h3 style ="color:green"><%= model_class.human_attribute_name(:method) %>:</h3>
               <p style="width:auto;"><%= @recipe.preparation_method %></p><br>
     </div>
 

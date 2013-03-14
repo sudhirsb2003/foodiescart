@@ -15,5 +15,4 @@
 //= require jquery_ujs
 //= require tabs
 //= require jquery-ui
-//= require autocomplete-rails
 //= require jquery_nested_form

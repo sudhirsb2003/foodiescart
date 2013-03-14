@@ -49,6 +49,7 @@
     <%= f.label :add_photo %><br />
     <%= f.file_field :photo %>
   </div><br>
+
 <%= f.link_to_add "Add ingredient", :ingredient_recipes %><br><br>
 <div id="ingredient" style="margin:100px">
 <%= f.fields_for :ingredient_recipes do |task_form| %>
@@ -58,6 +59,7 @@
 </div>
 <%= f.hidden_field :user_id , :value=>current_user.id  %>
 <br><br>
+
   <div class="actions">
     <%= f.submit %>
   </div>

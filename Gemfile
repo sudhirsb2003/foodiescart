@@ -20,6 +20,10 @@ gem 'activeadmin'
 gem 'activemerchant', :require => 'active_merchant'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'kaminari'
+gem 'cancan'
+gem 'omniauth'
+gem 'omniauth-google'
+gem 'omniauth-facebook'
 
 
 

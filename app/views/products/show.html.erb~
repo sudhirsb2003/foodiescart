@@ -19,7 +19,7 @@
   <h1><%= @product.ingredient.name %></h1><hr>
   <p class="ingredient">
   <%= @product.ingredient.decsription %><br><br>
-  <h3> Calorie Value :<%= @product.ingredient.calorie_value %><br></h3>
+  Calorie Value :<%= @product.ingredient.calorie_value %><br>
 </p>
 <hr>
 <pre>
@@ -34,11 +34,11 @@
 </tr></table>
 </pre>
 
-<%= form_for(@item, :product_id=> @product.id) do |f|  %>
+<%= form_for(@item) do |f|  %>
  <%= f.text_field :quantity %>
- <%= f.text_field :cart_id, :value=> "#{current_cart.id}" %>
- <%= f.text_field :product_id, :value=> "#{@product.id}" %>
- <%= f.submit 'buy', :class=>"button" %>
+ <%= f.hidden_field :cart_id, :value=> "#{current_cart.id}" %>
+ <%= f.hidden_field :product_id, :value=> "#{@product.id}" %>
+ <%= f.submit 'Add To Cart', :class=>"button" %>
 <% end %>
 
 <%= link_to "BUY", line_items_path(:product_id => @product) , :method => :post %> | 
